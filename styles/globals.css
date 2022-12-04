@@ -1,4 +1,8 @@
-html,
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* html,
 body {
   padding: 0;
   margin: 0;
@@ -20,7 +24,13 @@ a {
     color-scheme: dark;
   }
   body {
-    color: white;
-    background: black;
+    color: black;
+    background: white;
   }
+} */
+
+
+.redBorder {
+  border: 1px solid red;
 }
+
