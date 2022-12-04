@@ -43,7 +43,8 @@ const Carousel = ({children, space = 8,  speed = "medium", width = 100}: Carouse
 
       const bubbleNum = (num*step)
       scrollRef.current.scrollLeft = bubbleNum
-      setMainRefWidth(bubbleNum)
+      // setMainRefWidth(bubbleNum)
+      setRefWidth(bubbleNum)
 
     }
 
@@ -102,17 +103,17 @@ const Carousel = ({children, space = 8,  speed = "medium", width = 100}: Carouse
           </div>
           <BiChevronLeft className='text-[42px] absolute top-[35%] left-3' onClick={() => handleOffset(-1)} />
           <BiChevronRight className='text-[42px] absolute top-[35%] right-3' onClick={() => handleOffset(1)}/>
-          <div className='w-full flex justify-center gap-x-2'>
+          <div className='w-full flex justify-center gap-x-1 mt-4'>
               {
                 bubbleArray.map((el, index) => (
-                  <div key={index} className={`w-[10px] h-[10px] border border-blue-400 rounded-full `} onClick={() => handlePaginate(el)}>
+                  <div key={index} className={`w-[10px] h-[10px] border border-blue-400 rounded-full ${
+                    (Number(`${refWidth/step}`[0]) == el || ((Number(`${refWidth/step}`[0]) == (el + 1)) && el + 1 == bubbleArray.length)) ? "bg-blue-400" : "bg-transparent"
+                  }`} onClick={() => handlePaginate(el)}>
                   </div>
                 ))
               }
           </div>
-          <div>
-          {refWidth} {mainRefWidth}
-          </div>
+          
       </div>
   )
 }
@@ -135,18 +136,6 @@ export const Card = forwardRef<RefType, CardProps>(({children}: CardProps, ref) 
   )
 }
 )
-
-
-
-
-
-
-
-/**
- * For the pagination bubbles, do it this way:
- *Each will be assigned a vicinity in the scrollRef lenmgth that they will be responsible for, When a bubble is clicked, it goes to that vicinity. and then its backgound color changes. Also when the arrows are clicked, if the vicinty thet the scroller is in is same as the vicinity of a bubble, that bubble backgeound color changes. Also the buttoons and the bubbles should have a color prop.
- */
-
 
 
 

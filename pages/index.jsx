@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="redBorder w-screen h-screen flex items-center justify-center">
       <div className="max-w-[600px] ">
-          <Carousel space={60} divPerSlide = {5} speed = "medium">
+          <Carousel space={60} divPerSlide = {5} speed = "slow">
             {
               arr.map((el, index) => (
 
